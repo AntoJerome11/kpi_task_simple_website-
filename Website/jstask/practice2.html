@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
+<title>Home</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+<style>
+    *,*:after,*:before{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+figure{
+	width: 650px;
+	height: 450px;
+	overflow:hidden;
+	border:3px solid #fff;
+	position: relative;
+}
+figure img{
+	max-width: 100%;
+	min-width: 100%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	z-index: 10;
+	cursor: pointer;
+	
+}
+
+
+</style>
+
+</head>
+<body>
+
+<figure id="magnifying_area">
+	<img id="magnifying_img" src="../img/bg1.jpg">
+</figure>
+
+
+</body>
+<script>
+    var magnifying_area =  document.getElementById("magnifying_area");
+var magnifying_img =  document.getElementById("magnifying_img");
+
+magnifying_area.addEventListener("mousemove",function(event){
+	clientX = event.clientX - magnifying_area.offsetLeft
+	clientY = event.clientY - magnifying_area.offsetTop
+	 
+	var mWidth = magnifying_area.offsetWidth
+	var mHeight = magnifying_area.offsetHeight
+	clientX = clientX / mWidth * 100
+	clientY = clientY / mHeight * 100
+
+	//magnifying_img.style.transform = 'translate(-50%,-50%) scale(2)'
+	magnifying_img.style.transform = 'translate(-'+clientX+'%, -'+clientY+'%) scale(2)'
+})
+
+magnifying_area.addEventListener("mouseleave",function(){
+	magnifying_img.style.transform = 'translate(-50%,-50%) scale(1)'
+})
+</script>
+</html>

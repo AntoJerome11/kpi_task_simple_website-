@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Automatic Image Slider in HTML CSS | CodingNepal</title>
+      <link rel="stylesheet" href="style.css">
+
+      <style>
+.mybox{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.content{
+  height: 500px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 1px 1px 15px rgba(0,0,0,0.4);
+}
+.content .images{
+  height: 100%;
+  width: 100%;
+}
+.images img{
+  height: 100%;
+  width: 100%;
+}
+      </style>
+
+   </head>
+   <body>
+       <div class="my box">
+      <div class="content">
+         <div class="images">
+            <img src="img/prod/laptop.jpg">
+            <img src="img/prod/mobile.jpeg">
+            <img src="img/bg1.jpg">
+            <img src="img/bg2.jpg">
+            <img src="img/bg5.jpg">
+         </div>
+      </div>
+    </div>
+      <script>
+         var indexValue = 0;
+         function slideShow(){
+           setTimeout(slideShow, 2500);
+           var x;
+           const img = document.querySelectorAll("img");
+           for(x = 0; x < img.length; x++){
+             img[x].style.display = "none";
+           }
+           indexValue++;
+           if(indexValue > img.length){indexValue = 1}
+           img[indexValue -1].style.display = "block";
+         }
+         slideShow();
+      </script>
+   </body>
+</html>
